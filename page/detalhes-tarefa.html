@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes da Tarefa - Sistema de Gerenciamento de Tarefas</title>
+    <link rel="stylesheet" href="../style.css">
+    <script src="../theme.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <!--Icones do git-->
+</head>
+
+<body class="dashboard-body">
+    <a href="#conteudo-principal" class="skip-link">Ir para o conteúdo principal</a>
+
+    <div class="dashboard-container">
+        <aside class="sidebar">
+            <h1>Painel <i class="bi bi-speedometer2"></i></h1>
+            <nav class="menu-navegacao">
+                <ul>
+                    <li><a href="./dashboard.html">Minhas Tarefas</a></li>
+                    <li><a href="./criar-tarefa.html">Nova Tarefa</a></li>
+                    <li><a href="../index.html">Sair</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="conteudo-principal" id="conteudo-principal">
+            <header class="cabecalho-dashboard">
+                <h2>Detalhes da Tarefa</h2>
+                <a href="./dashboard.html" class="botao-voltar-lista">Voltar para a Lista</a>
+            </header>
+
+            <div class="detalhes-container">
+                <div class="cartao-detalhes">
+                    <div class="titulo-status">
+                        <h2>Revisar proposta do cliente</h2>
+                        <span class="status-pendente-detalhes">Pendente</span>
+                    </div>
+                    <form action="./dashboard.html">
+                        <div class="campo-detalhes">
+                            <label>Criado em:</label>
+
+                            <span>24 de Agosto de 2025</span>
+                        </div>
+
+                        <div class="campo-detalhes">
+                            <label>Descrição:</label>
+                            <div class="descricao-completa">
+                                <p>Verificar os valores e o escopo do projeto antes de enviar para o cliente. Focar na
+                                    cláusula 5.3 sobre prazos de entrega. É crucial garantir que todos os itens
+                                    solicitados
+                                    na última reunião estejam contemplados no documento final.</p>
+                            </div>
+                        </div>
+
+                        <div class="acoes-detalhes">
+                            <button type="submit" class="botao-editar-tarefa">Editar Tarefa</button>
+                            <button class="botao-excluir-tarefa">Excluir Tarefa</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <footer class="rodape">
+                <p>&copy; 2025 Projeto Acadêmico Valter </p>
+                <div class="footer-links">
+                    <a href="https://github.com/valter19-dev/Projeto-Final-" target="_blank"
+                        aria-label="Repositório no GitHub">
+                        <i class="fab fa-github"> Repositorio</i>
+                    </a>
+                    <a href="https://valter19-dev.github.io/Projeto-Final-/index.html" target="_blank"
+                        aria-label="Projeto Hospedado">
+                        <i class="fas fa-external-link-alt"> Projeto hospedado</i>
+                    </a>
+                </div>
+            </footer>
+        </main>
+    </div>
+</body>
+
+</html>

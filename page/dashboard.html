@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Sistema de Gerenciamento de Tarefas</title>
+    <link rel="stylesheet" href="../style.css">
+    <script src="../theme.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <!--Icones do olho e do painel-->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <!--Icones do git-->
+
+</head>
+
+<body class="dashboard-body">
+    <a href="#conteudo-principal" class="skip-link">Ir para o conteúdo principal</a>
+
+
+
+    <div class="dashboard-container">
+        <aside class="sidebar">
+            <h1>Painel <i class="bi bi-speedometer2"></i></h1>
+            <nav class="menu-navegacao">
+                <ul>
+                    <li><a href="./dashboard.html" class="ativo">Minhas Tarefas</a></li>
+                    <li><a href="./criar-tarefa.html">Nova Tarefa</a></li>
+                    <li><a href="#" id="themeToggle">
+                            <span class="text">Modo Claro</span>
+                            <span class="icon">🌙</span>
+                        </a></li>
+                    <li><a href="../index.html">Sair</a></li>
+
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="conteudo-principal" id="conteudo-principal">
+            <header class="cabecalho-dashboard">
+                <h2>Minhas Tarefas</h2>
+                <a href="./criar-tarefa.html" class="botao-nova-tarefa">Nova Tarefa</a>
+                <!-- Botão de alternância de tema -->
+
+
+            </header>
+
+            <div class="grade-tarefas">
+                <div class="cartao-tarefa">
+                    <div class="cabecalho-cartao">
+                        <h3>Tarefa 1</h3>
+                        <!-- Ícones de olho -->
+                        <a href="./detalhes-tarefa.html" class="icone-olho">
+                            <i class="bi bi-eye olho normal"></i>
+                            <i class="bi bi-eye-fill olho cheio"></i>
+                        </a>
+                    </div>
+                    <p>Descrição: organizar e classificar a primeira tarefa a ser realizada.</p>
+                    <div class="acoes-tarefa">
+                        <a href="./editar-tarefa.html" class="botao-editar">Editar</a>
+                        <button class="botao-concluir">Concluir</button>
+                    </div>
+                </div>
+
+                <div class="cartao-tarefa">
+                    <div class="cabecalho-cartao">
+                        <h3>Tarefa 2</h3>
+                        <a href="./detalhes-tarefa.html" class="icone-olho">
+                            <i class="bi bi-eye olho normal"></i>
+                            <i class="bi bi-eye-fill olho cheio"></i>
+                        </a>
+                    </div>
+
+                    <p>Descrição: executar e classificar a segunda tarefa a ser realizada.</p>
+                    <div class="acoes-tarefa">
+                        <a href="./editar-tarefa.html" class="botao-editar">Editar</a>
+                        <button class="botao-concluir">Concluir</button>
+                    </div>
+                </div>
+
+                <div class="cartao-tarefa">
+                    <div class="cabecalho-cartao">
+                        <h3>Tarefa 3</h3>
+                        <a href="./detalhes-tarefa.html" class="icone-olho">
+                            <i class="bi bi-eye olho normal"></i>
+                            <i class="bi bi-eye-fill olho cheio"></i>
+                        </a>
+
+                    </div>
+                    <p>Descrição: executar e classificar a terceira tarefa a ser realizada.</p>
+                    <div class="acoes-tarefa">
+                        <a href="./editar-tarefa.html" class="botao-editar">Editar</a>
+                        <button class="botao-concluir">Concluir</button>
+                    </div>
+                </div>
+
+                <div class="cartao-tarefa">
+                    <div class="cabecalho-cartao">
+                        <h3>Tarefa 4</h3>
+                        <a href="./detalhes-tarefa.html" class="icone-olho">
+                            <i class="bi bi-eye olho normal"></i>
+                            <i class="bi bi-eye-fill olho cheio"></i>
+                        </a>
+
+                    </div>
+                    <p>Descrição: executar e classificar a quarta tarefa a ser realizada.</p>
+                    <div class="acoes-tarefa">
+                        <a href="./editar-tarefa.html" class="botao-editar">Editar</a>
+                        <button class="botao-concluir">Concluir</button>
+                    </div>
+                </div>
+
+                <div class="cartao-tarefa">
+                    <div class="cabecalho-cartao">
+                        <h3>Tarefa 5</h3>
+                        <a href="./detalhes-tarefa.html" class="icone-olho">
+                            <i class="bi bi-eye olho normal"></i>
+                            <i class="bi bi-eye-fill olho cheio"></i>
+                        </a>
+
+                    </div>
+                    <p>Descrição: executar e classificar a quinta tarefa a ser realizada.</p>
+                    <div class="acoes-tarefa">
+                        <a href="./editar-tarefa.html" class="botao-editar">Editar</a>
+                        <button class="botao-concluir">Concluir</button>
+                    </div>
+                </div>
+
+                <div class="cartao-tarefa">
+                    <div class="cabecalho-cartao">
+                        <h3>Tarefa 6</h3>
+                        <a href="./detalhes-tarefa.html" class="icone-olho">
+                            <i class="bi bi-eye olho normal"></i>
+                            <i class="bi bi-eye-fill olho cheio"></i>
+                        </a>
+
+                    </div>
+                    <p>Descrição: executar e classificar a sexta tarefa a ser realizada.</p>
+                    <div class="acoes-tarefa">
+                        <a href="./editar-tarefa.html" class="botao-editar">Editar</a>
+                        <button class="botao-concluir">Concluir</button>
+                    </div>
+                </div>
+            </div>
+
+            <footer class="rodape">
+                <p>&copy; 2025 Projeto Acadêmico Valter </p>
+                <div class="footer-links">
+                    <a href="https://github.com/valter19-dev/Projeto-Final-" target="_blank"
+                        aria-label="Repositório no GitHub">
+                        <i class="fab fa-github"> Repositorio</i>
+                    </a>
+                    <a href="https://valter19-dev.github.io/Projeto-Final-/index.html" target="_blank"
+                        aria-label="Projeto Hospedado">
+                        <i class="fas fa-external-link-alt"> Projeto hospedado</i>
+                    </a>
+                </div>
+            </footer>
+        </main>
+    </div>
+
+    <script>
+        // Sistema de alternância de tema
+        const themeToggle = document.getElementById('themeToggle');
+        const body = document.body;
+        const icon = themeToggle.querySelector('.icon');
+        const text = themeToggle.querySelector('.text');
+
+        // Verificar tema salvo no localStorage
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+
+        // Aplicar tema inicial
+        if (savedTheme === 'light') {
+            body.setAttribute('data-theme', 'light');
+            text.textContent = 'Modo Escuro';
+            icon.textContent = '🌙';
+        } else {
+            body.removeAttribute('data-theme');
+            text.textContent = 'Modo Claro';
+            icon.textContent = '☀️';
+
+        }
+
+        // Função para alternar tema
+        function toggleTheme() {
+            const currentTheme = body.getAttribute('data-theme');
+
+            if (currentTheme === 'light') {
+                // Mudar para tema escuro
+                body.removeAttribute('data-theme');
+
+                text.textContent = 'Modo Claro';
+                icon.textContent = '☀️';
+                localStorage.setItem('theme', 'dark');
+            } else {
+                // Mudar para tema claro
+                body.setAttribute('data-theme', 'light');
+                text.textContent = 'Modo Escuro';
+                icon.textContent = '🌙';
+                localStorage.setItem('theme', 'light');
+            }
+        }
+
+        // Adicionar evento de clique
+        themeToggle.addEventListener('click', toggleTheme);
+    </script>
+</body>
+
+</html>

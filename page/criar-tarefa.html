@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criar Nova Tarefa - Sistema de Gerenciamento de Tarefas</title>
+    <link rel="stylesheet" href="../style.css">
+    <script src="../theme.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <!--Icones do git-->
+</head>
+
+<body class="dashboard-body">
+    <a href="#conteudo-principal" class="skip-link">Ir para o conteúdo principal</a>
+
+    <div class="dashboard-container">
+        <aside class="sidebar">
+            <h1>Painel <i class="bi bi-speedometer2"></i></h1>
+            <nav class="menu-navegacao">
+                <ul>
+                    <li><a href="./dashboard.html">Minhas Tarefas</a></li>
+                    <li><a href="./criar-tarefa.html" class="ativo">Nova Tarefa</a></li>
+                    <li><a href="../index.html">Sair</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="conteudo-principal" id="conteudo-principal">
+            <header class="cabecalho-dashboard">
+                <h2>Nova Tarefa</h2>
+            </header>
+
+            <div class="formulario-container">
+                <form class="formulario-tarefa" action="./dashboard.html">
+                    <div class="campo-formulario">
+                        <label for="titulo-tarefa">Título da Tarefa</label>
+                        <input type="text" id="titulo-tarefa" placeholder="Ex: Fazer compras da semana">
+                    </div>
+
+                    <div class="campo-formulario">
+                        <label for="descricao-tarefa">Descrição (Opcional)</label>
+                        <textarea id="descricao-tarefa" rows="5" placeholder="Descreva mais a tarefa..."></textarea>
+                    </div>
+
+                    <div class="acoes-formulario">
+                        <button type="submit" class="botao-salvar-tarefa">Salvar Tarefa</button>
+                        <button type="submit" class="botao-cancelar">Cancelar</button>
+                    </div>
+                </form>
+            </div>
+
+            <footer class="rodape">
+                <p>&copy; 2025 Projeto Acadêmico Valter </p>
+                <div class="footer-links">
+                    <a href="https://github.com/seu-usuario/seu-repositorio" target="_blank"
+                        aria-label="Repositório no GitHub">
+                        <i class="fab fa-github"> Repositorio</i>
+                    </a>
+                    <a href="https://seu-projeto-hospedado.com" target="_blank" aria-label="Projeto Hospedado">
+                        <i class="fas fa-external-link-alt"> Projeto hospedado</i>
+                    </a>
+                </div>
+            </footer>
+        </main>
+    </div>
+</body>
+
+</html>
