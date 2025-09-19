@@ -185,7 +185,7 @@ form button:hover {
     margin-bottom: 30px;
     font-size: 1.9rem;
     font-weight: bold;
-    border-left: 2px solid var(--cor-perigo-hover);
+    border-left: 2px solid var(--cor-primaria);
     border-radius: 8px;
     padding: 8px;
 }
@@ -214,7 +214,7 @@ form button:hover {
 .menu-navegacao a.ativo {
     background-color: var(--cor-borda);
     color: var(--texto-principal);
-    border-right: 1px solid var(--cor-perigo-hover);
+    border-right: 1px solid var(--texto-secundario)
 }
 
 .conteudo-principal {
@@ -429,7 +429,7 @@ form button:hover {
 
 p {
     margin-top: 20px;
-    color: var(--texto-secundario);
+    color: var(--texto-principal);
 }
 
 p a {
@@ -439,6 +439,7 @@ p a {
 
 p a:hover {
     text-decoration: underline;
+    cursor: pointer;
 }
 
 
@@ -691,7 +692,7 @@ p a:hover {
 }
 
 .footer-links a:hover {
-    color: var(--cor-primaria);
+    color: var(--cor-link);
 }
 
 

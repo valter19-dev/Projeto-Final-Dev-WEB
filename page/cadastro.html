@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - Sistema de Gerenciamento de Tarefas</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="/theme.js"></script>
+    <title>Sistema de Gerenciamento de Tarefas</title>
+    <link rel="stylesheet" href="../style.css">
+    <script src="../theme.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <!--Icones do git-->
 </head>
@@ -15,18 +15,20 @@
     <a href="#conteudo-principal" class="skip-link">Ir para o conteúdo principal</a>
 
     <div class="container">
+
         <h1>Sistema de<br> Gerenciamento de<br> Tarefas</h1>
         <div class="form-container">
-            <h2>Faça Login</h2>
-            <form id="conteudo-principal" action="./page/dashboard.html">
-                <label for="email-login">Email</label>
-                <input type="email" id="email-login" placeholder="seu@email.com" required>
-                <label for="senha-login">Senha</label>
-                <input type="password" id="senha-login" placeholder="Sua senha" required>
-                <button type="submit">Entrar</button>
+            <h2>Crie sua Conta</h2>
+            <form id="conteudo-principal" action="/index.html">
+                <label for="nome">Nome</label>
+                <input type="text" id="nome" placeholder="Seu nome completo" required>
+                <label for="email">Email</label>
+                <input type="email" id="email" placeholder="seu@email.com" required>
+                <label for="senha">Senha</label>
+                <input type="password" id="senha" placeholder="Crie uma senha forte" required>
+                <button type="submit" class="botao-salvar">Salvar</button>
             </form>
-            <p>Não tem uma conta? <a onclick="window.location.href='./page/cadastro.html'">Cadastre-se</a>
-            </p>
+            <p>Já tem uma conta? <a onclick="window.location.href='/index.html'">Faça Login</a></p>
         </div>
         <footer class="rodape">
             <p>&copy; 2025 Projeto Acadêmico Valter </p>
@@ -42,6 +44,7 @@
             </div>
         </footer>
     </div>
+
 </body>
 
 </html>
