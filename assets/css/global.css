@@ -10,6 +10,7 @@
 
     /* Texto */
     --texto-principal: #f5f5f5;
+    --texto-notificacao: #000000;
     --texto-secundario: #9ca3af;
     --texto-placeholder: #dad3d3;
     --texto-label: #efe3e3;
@@ -26,43 +27,71 @@
     --cor-link: #0ea5e9;
 
     /* Sombras */
-    --sombra-cartao: 0 2px 4px rgba(0, 0, 0, 0.3);
+    --sombra-cartao: 0 2px 4px rgba(0, 0, 0, 0.589);
     --sombra-form: 0 0 10px rgba(0, 0, 0, 0.5);
+
+    /*Cores SideBar*/
+
+    --color-primary: #7380ec;
+    --color-danger: #AD000E;
+    --color-sucess: #41f1b6;
+    --color-warning: #ffbb55;
+    --color-white: #fff;
+    --color-info-dark: #7d8da1;
+    --color-info-light: #dce1ebs;
+    --color-dark: #363949;
+    --color-light: rgba(132, 139, 200, 0.18);
+    --color-primary-variant: #111e88;
+    --color-dark-variant: #677483;
+    --color-backgroud: #f6f6f9;
 }
 
 /* Tema Claro */
 [data-theme="light"] {
-    --cor-fundo: #f8fafc;
+    --cor-fundo: #f0f2f4;
+    ;
+    /* Fundo geral, levemente azulado e suave */
     --cor-sidebar: #ffffff;
+    /* Fundo da sidebar */
     --cor-cartao: #ffffff;
-    --cor-borda: #e2e8f0;
+    /* Fundo dos cards */
+    --cor-borda: #e2dbdb;
+    /* Borda suave */
     --cor-input: #ffffff;
-    --cor-input-borda: #d1d5db;
+    --cor-input-borda: #d0d7e2;
 
-    /* Texto */
-    --texto-principal: #1f2937;
-    --texto-secundario: #6b7280;
-    --texto-placeholder: #9ca3af;
-    --texto-label: #374151;
+    --texto-principal: #1e293b;
+    --texto-notificacao: #000000;
+    /* Azul escuro, confortável pra leitura */
+    --texto-secundario: #64748b;
+    /* Cinza-azulado, bom contraste */
+    --texto-label: #475569;
+    --texto-placeholder: #94a3b8;
 
-    /* Ações */
-    --cor-primaria: #1a1aaf;
-    --cor-primaria-hover: #1a4195;
-    --cor-secondary: #2c2ebf;
-    --cor-secondary-hover: #03389a;
-    --cor-sucesso: #198754;
-    --cor-sucesso-hover: #1b553a;
-    --cor-perigo: #dc3545;
-    --cor-perigo-hover: #dc2626;
-    --cor-link: #0ea5e9;
+    --cor-primaria: #2563eb;
+    /* Azul principal (botões, links) */
+    --cor-primaria-hover: #1d4ed8;
+    /* Azul um pouco mais escuro no hover */
+    --cor-secondary: #3b82f6;
+    /* Azul secundário */
+    --cor-secondary-hover: #2563eb;
 
-    /* Sombras */
-    --sombra-cartao: 0 2px 4px rgba(0, 0, 0, 0.1);
+    --cor-sucesso: #16a34a;
+    /* Verde suave (para concluído) */
+    --cor-sucesso-hover: #15803d;
+    --cor-perigo: #dc2626;
+    /* Vermelho para excluir */
+    --cor-perigo-hover: #b91c1c;
+
+    --sombra-cartao: 0 2px 4px hsla(0, 0%, 0%, 0.76);
     --sombra-form: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 /* Estilos base */
 body {
+    display: flex;
+    /* Define o corpo como contêiner flexível */
+    min-height: 100vh;
     font-family: Arial, sans-serif;
     background-color: var(--cor-fundo);
     color: var(--texto-secundario);
@@ -70,7 +99,6 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
     overflow-x: hidden;
     transition: background-color 0.3s ease, color 0.3s ease;
 }
@@ -78,6 +106,7 @@ body {
 .container {
     text-align: center;
     padding: 20px;
+    width: 100%;
 }
 
 
@@ -89,11 +118,11 @@ h1 {
 
 .form-container {
     background-color: var(--cor-cartao);
-    padding: 30px;
+    padding: 10px 20px;
     border-radius: 8px;
     box-shadow: var(--sombra-form);
     width: 98%;
-    max-width: 400px;
+    max-width: 500px;
     margin: 0 auto;
     box-sizing: border-box;
     border: 1px solid var(--cor-borda);
@@ -102,7 +131,8 @@ h1 {
 
 h2 {
     color: var(--texto-principal);
-    margin-bottom: 20px;
+    line-height: 3.2rem;
+
 }
 
 form label {
@@ -115,7 +145,7 @@ form label {
 form input[type="text"],
 form input[type="email"],
 form input[type="password"] {
-    width: calc(100% - 20px);
+    width: -webkit-fill-available;
     padding: 10px;
     margin-bottom: 15px;
     border: 1px solid var(--cor-input-borda);
@@ -135,6 +165,31 @@ form input:focus {
     box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
 }
 
+/* ====== Estilo para campos inválidos (modo claro suave) ====== */
+form input.invalido {
+    border-color: #fca5a5;
+    /* vermelho claro */
+    background-color: #fff7f7;
+    /* fundo rosado bem leve */
+    color: #b91c1c;
+    /* texto vermelho escuro, sem incomodar */
+    transition: all 0.3s ease;
+}
+
+/* Placeholder também ganha um leve tom de alerta */
+form input.invalido::placeholder {
+    color: #b91c1c;
+}
+
+/* Mensagem de erro */
+#erro-email {
+    color: #b91c1c;
+    font-size: 0.9rem;
+    margin-bottom: 8px;
+    display: block;
+}
+
+
 form button {
     background-color: var(--cor-primaria);
     color: white;
@@ -152,6 +207,62 @@ form button:hover {
     background-color: var(--cor-primaria-hover);
 }
 
+/* Estilo das mensagens de erro ============================ */
+.mensagem-erro {
+    color: #b91c1c;
+    /* Vermelho escuro */
+    font-size: 0.9rem;
+    margin-bottom: 8px;
+    display: block;
+}
+
+/* Campos inválidos */
+form input.invalido {
+    border-color: #fca5a5;
+    background-color: #fff7f7;
+    color: #b91c1c;
+    transition: all 0.3s ease;
+}
+
+form input.invalido::placeholder {
+    color: #b91c1c;
+}
+
+/* Botão principal */
+.botao-primario {
+    width: 100%;
+    padding: 10px;
+    background-color: var(--cor-primaria);
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.botao-primario:hover {
+    background-color: var(--cor-primaria-hover);
+}
+
+/* Texto de link abaixo do botão */
+.texto-login {
+    margin-top: 10px;
+    text-align: center;
+}
+
+.texto-login a {
+    color: var(--cor-primaria);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.texto-login a:hover {
+    text-decoration: underline;
+}
+
+
+
 
 
 /* Estilos do Dashboard */
@@ -167,7 +278,10 @@ form button:hover {
 
 .dashboard-container {
     display: flex;
-    width: 100%;
+    height: 100vh;
+    /* ocupa toda a altura da janela */
+    width: 100vw;
+    /* ocupa toda a largura da janela */
 }
 
 /* Estilos do Menu de navegação e Sidebar*/
@@ -180,55 +294,104 @@ form button:hover {
     transition: all 0.3s ease;
 }
 
-.sidebar h1 {
-    color: var(--texto-principal);
-    margin-bottom: 30px;
-    font-size: 1.9rem;
-    font-weight: bold;
-    border-left: 2px solid var(--cor-primaria);
-    border-radius: 8px;
-    padding: 8px;
+/* Sidebar padrão */
+aside .menu-navegacao {
+    display: flex;
+    flex-direction: column;
+    height: 86vh;
+    position: relative;
+    top: 4rem;
 }
 
-
-.menu-navegacao ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+aside h3 {
+    font-weight: 500;
 }
 
-.menu-navegacao li {
-    margin-bottom: 10px;
-}
-
-.menu-navegacao a {
-    color: var(--texto-secundario);
+aside .menu-navegacao a {
+    display: flex;
+    color: var(--color-info-dark);
+    margin-left: 2rem;
+    gap: 1rem;
     text-decoration: none;
-    padding: 10px 15px;
-    display: block;
-    border-radius: 6px;
-    transition: all 0.3s ease;
+    align-items: center;
+    position: relative;
+    height: 3.7rem;
+    transition: all 300ms ease;
 }
 
-.menu-navegacao a:hover,
-.menu-navegacao a.ativo {
-    background-color: var(--cor-borda);
-    color: var(--texto-principal);
-    border-right: 1px solid var(--texto-secundario)
+aside .menu-navegacao a i {
+    font-size: 1.6rem;
+    transition: all 300ms ease;
 }
+
+aside .menu-navegacao a:last-child {
+    position: absolute;
+    bottom: 2rem;
+    width: 100%;
+}
+
+aside .menu-navegacao a.active {
+    background: var(--color-light);
+    color: var(--color-primary);
+    margin-left: 0;
+}
+
+aside .menu-navegacao a.active:before {
+    content: "";
+    width: 6px;
+    height: 100%;
+    background: var(--color-primary);
+}
+
+aside .menu-navegacao a.active i {
+    color: var(--color-primary);
+    margin-left: calc(1rem - 3px);
+}
+
+aside .menu-navegacao a:hover {
+    color: var(--color-primary);
+}
+
+aside .menu-navegacao a:hover i {
+    margin-left: 1rem;
+}
+
+aside .menu-navegacao .message-count {
+    background: var(--color-danger);
+    color: var(--color-white);
+    padding: 2px 10px;
+    font-size: 11px;
+    border-radius: var(--border-radius-1);
+}
+
+
+
 
 .conteudo-principal {
     flex: 1;
     padding: 20px;
     background-color: var(--cor-fundo);
     transition: background-color 0.3s ease;
+    justify-content: space-between;
+    padding-top: 7rem;
+    width: 100%;
+    overflow-y: auto;
+    /* mantém o footer no fim */
 }
 
 .cabecalho-dashboard {
     display: flex;
     justify-content: space-between;
-    align-items: center;
     margin-bottom: 30px;
+    font-size: small;
+    background-color: var(--cor-cartao);
+    padding: 10px;
+    border: 1px solid var(--cor-borda);
+    border-radius: 10px;
+    flex-direction: row;
+    align-items: center;
+    gap: 15px;
+    align-items: flex-start;
 }
 
 .cabecalho-dashboard h1 {
@@ -241,7 +404,6 @@ form button:hover {
 
 /*Estilização global para todos os botões - página === TODAS ===*/
 
-.botao-nova-tarefa,
 .botao-voltar-lista,
 .botao-cancelar-edicao {
     background-color: var(--cor-primaria);
@@ -328,7 +490,7 @@ form button:hover {
 .botao-editar-tarefa {
     display: inline-block;
     width: 31vh;
-    background-color: var(--cor-secondary);
+    background-color: var(--cor-primaria);
     color: white;
     padding: 10px;
     border: none;
@@ -342,7 +504,7 @@ form button:hover {
 }
 
 .botao-editar-tarefa:hover {
-    background-color: var(--cor-secondary-hover);
+    background-color: var(--cor-primaria-hover);
 }
 
 .botao-excluir-tarefa {
@@ -364,6 +526,27 @@ form button:hover {
 .botao-excluir-tarefa:hover {
     background-color: var(--cor-perigo-hover);
 }
+
+.botao-excluir {
+    display: inline-block;
+    width: 25vh;
+    background-color: #e74c3c;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 6px;
+    text-decoration: none;
+    text-align: center;
+    cursor: pointer;
+    font-weight: bold;
+    margin-top: 10px;
+    transition: background 0.3s;
+}
+
+.botao-excluir:hover {
+    background-color: #c0392b;
+}
+
 
 .botao-cancelar {
     display: inline-block;
@@ -448,28 +631,96 @@ p a:hover {
 .grade-tarefas {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
+    gap: 30px;
     margin-bottom: 40px;
 }
 
+#listaTarefas {
+    display: contents;
+    /* herda o comportamento do grid da .grade-tarefas */
+}
+
+/* =============================
+   🎴 ESTILO DOS CARDS DE TAREFAS
+============================= */
+
+.tarefas-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    width: 100%;
+}
+
 .cartao-tarefa {
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: var(--sombra-cartao);
-    transition: all 0.3s ease;
+    background: var(--cor-cartao);
+    border-radius: 12px;
+    padding: 2rem;
+    width: 100%;
+    border: 2px solid var(--cor-borda);
+    color: var(--texto-principal);
+    transition: transform 0.2s ease, box-shadow 0.3s ease;
 }
 
 .cartao-tarefa:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    border-right: 1px solid var(--cor-secondary-hover);
+    transform: translateY(-4px);
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.108);
 }
 
-.cartao-tarefa,
+.cabecalho-cartao {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.acoes-tarefa {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.acoes-tarefa a,
+.acoes-tarefa button {
+    flex: 1;
+    min-width: 100px;
+    text-align: center;
+    border: none;
+    padding: 0.6rem;
+    border-radius: 8px;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+}
+
+.botao-editar {
+    background-color: var(--cor-primaria);
+}
+
+.botao-concluir {
+    background-color: var(--cor-sucesso);
+}
+
+.botao-excluir {
+    background-color: var(--cor-perigo);
+}
+
+
+
 .cartao-detalhes,
 .formulario-tarefa {
-    background-color: var(--cor-cartao);
-    border: 1px solid var(--cor-borda);
+    width: 100%;
+    max-width: 1200px;
+    /* 3. Garante que os paddings e borders sejam incluídos na largura total */
+    box-sizing: border-box;
+    margin-bottom: 20px;
+    border: 2px solid var(--cor-borda);
+}
+
+.formulario-container,
+.detalhes-container {
+    max-width: 100%;
+    /* Permite expansão até o limite do .conteudo-principal */
 }
 
 .cabecalho-cartao {
@@ -522,18 +773,8 @@ p a:hover {
     gap: 10px;
 }
 
-.rodape-dashboard {
-    margin-top: auto;
-    padding-top: 20px;
-    border-top: 1px solid var(--cor-borda);
-    color: var(--texto-secundario);
-    text-align: center;
-}
-
 /* Estilos para Detalhes da Tarefa - página === DETALHES-TAREFA === */
-.detalhes-container {
-    max-width: 800px;
-}
+
 
 .cartao-detalhes {
     background-color: var(--cor-cartao);
@@ -603,10 +844,6 @@ p a:hover {
     justify-content: space-between;
 }
 
-/* Estilos de Formulários para as páginas === EDITAR-TAREFA E CRIAR-TAREFA === */
-.formulario-container {
-    max-width: 600px;
-}
 
 .formulario-tarefa {
     background-color: var(--cor-cartao);
@@ -695,97 +932,27 @@ p a:hover {
     color: var(--cor-link);
 }
 
-
-/* Responsividade do Dashboard com Media Query para telas médias (Tablets)  */
-@media (max-width: 768px) {
-    .dashboard-container {
-        flex-direction: column;
-    }
-
-    .sidebar {
-        width: 100%;
-        padding: 15px;
-        border-right: none;
-        border-bottom: 1px solid var(--cor-borda);
-    }
-
-    .menu-navegacao ul {
-        display: flex;
-        overflow-x: auto;
-        gap: 10px;
-    }
-
-    .menu-navegacao li {
-        margin-bottom: 0;
-        white-space: nowrap;
-    }
-
-    .cabecalho-dashboard {
-        flex-direction: column;
-        gap: 15px;
-        align-items: flex-start;
-    }
-
-    .grade-tarefas {
-        grid-template-columns: 1fr;
-    }
-
-    .acoes-formulario {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .acoes-detalhes {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .botao-salvar,
-    .botao-salvar-alteracoes,
-    .botao-salvar-tarefa {
-        width: 100%;
-    }
-
-    .botao-cancelar,
-    .botao-editar-tarefa {
-        width: 100%;
-    }
-
-    .botao-excluir-tarefa {
-        width: 100%;
-    }
+/* Botão do menu (hamburger) */
+.menu-toggle {
+    display: none;
+    /* só aparece no mobile */
+    z-index: 1001;
+    background: none;
+    border: none;
+    color: var(--texto-principal);
+    padding: 0.7rem 1rem;
+    font-size: 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
 }
 
-/*Responsividade com Media Query para tela menores (Celular)*/
-
-@media (max-width: 500px) {
-    .conteudo-principal {
-        padding: 15px;
-    }
-
-    .botao-cancelar,
-    .botao-editar-tarefa {
-        width: 93%;
-    }
-
-    .menu-navegacao ul {
-        display: grid;
-        grid-template-columns: auto auto;
-        overflow-x: auto;
-        gap: 10px;
-    }
-
-    .cartao-tarefa,
-    .cartao-detalhes,
-    .formulario-tarefa {
-        padding: 20px;
-    }
+.menu-toggle:hover {
+    font-weight: bold;
+    transform: scale(1.05);
 }
 
-/*Animação do incone do painel*/
-.sidebar h1 i {
-    color: rgb(187, 11, 11);
-}
+
 
 
 /*skip Link*/
@@ -807,4 +974,99 @@ p a:hover {
 /* Quando recebe foco pelo teclado, aparece */
 .skip-link:focus {
     top: 10px;
+}
+
+
+/* Notificações */
+.notificacao {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 15px 20px;
+    border-radius: 8px;
+    font-size: bold;
+    color: var(--texto-notificacao);
+    font-weight: 500;
+    opacity: 0;
+    transform: translateX(50%);
+    min-width: 300px;
+    text-align: center;
+    transition: all 0.3s ease;
+    z-index: 1000;
+
+    /* ESTADO INICIAL (Oculto) */
+    opacity: 0;
+    visibility: hidden;
+    /* Garante que não possa ser clicado/interagido */
+
+    /* ADICIONA A TRANSIÇÃO (Animação) */
+    /* Faz a transição de opacidade e visibilidade suave em 0.5 segundos */
+    transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
+}
+
+/* 2. ESTADO VISÍVEL: A classe que o JS adiciona/mantém quando queremos mostrar */
+.notificacao.ativo {
+    opacity: 1;
+    /* Visível */
+    visibility: visible;
+
+    /* Interativo */
+    /* * Transição para o estado 'ativo' 
+     * Isso garante que a entrada 'slideIn' aconteça
+     */
+    transform: translateY(0);
+    /* Volta para a posição original (top: 20px) */
+
+    /* Aplica a animação de entrada */
+    animation: slideIn 0.5s forwards;
+
+    /* Reabilita cliques (se precisar) */
+    pointer-events: auto;
+}
+
+.notificacao.saindo {
+    animation: slideOut 0.5s forwards;
+    /* Roda a animação de saída */
+}
+
+.notificacao.sucesso {
+    background-color: #43e782;
+    border-left: 7px solid var(--cor-sucesso);
+    opacity: 1;
+    transform: translateX(0);
+
+
+}
+
+.notificacao.erro {
+    background-color: #d83522;
+    opacity: 1;
+    color: #fff;
+    transform: translateX(0);
+}
+
+@keyframes slideIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-50px);
+        /* Começa acima */
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+        /* Termina na posição de visualização */
+    }
+}
+
+@keyframes slideOut {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
 }
