@@ -85,6 +85,8 @@ O layout foi desenvolvido com design responsivo usando apenas CSS, funcionando p
 
 |-- page/
 
+|   |-- cadastro.html 
+
 |   |-- criar-tarefa.html 
 
 |   |-- dashboard.html 
@@ -93,9 +95,7 @@ O layout foi desenvolvido com design responsivo usando apenas CSS, funcionando p
 
 |   |-- editar-tarefa.html 
 
-|   |-- login.html 
-
-|-- index.html 
+|-- index.html (login)
 
 |-- README.md 
 
@@ -105,11 +105,11 @@ O layout foi desenvolvido com design responsivo usando apenas CSS, funcionando p
 
  **Mapa do site**  
 
-Cadastro - Home (index.html) 
+ Login (index.html) 
 
 │ 
 
-├── Login (login.html) 
+├── Cadastro (cadastro.html) 
 
 │ 
 

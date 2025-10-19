@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Sistema de Gerenciamento de Tarefas</title>
+    <link rel="stylesheet" href="../assets/css/global.css">
+    <link rel="stylesheet" href="../assets/css/media-queries.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <!--Icones do git-->
+</head>
+
+<body>
+    <a href="#conteudo-principal" class="skip-link">Ir para o conteúdo principal</a>
+
+    <div class="container">
+
+        <div id="notificacao" class="notificacao"></div>
+
+        <div class="form-container">
+            <h2>Faça Login</h2>
+            <form id="form-login">
+                <label for="email-login">Email:</label>
+                <input type="email" id="email-login" placeholder="seu@email.com" required>
+
+                <span id="erro-email" class="mensagem-erro"></span>
+
+                <label for="senha-login">Senha:</label>
+                <input type="password" id="senha-login" placeholder="insira sua senha" required>
+                <span id="erro-senha" class="mensagem-erro"></span>
+                <button type="submit">Entrar</button>
+            </form>
+            <p> Não tem uma conta? <a href="./cadastro.html"> Cadastre-se </a> </p>
+        </div>
+    </div>
+    <script src="../assets/js/login.js"></script>
+    <script src="../assets/js/theme.js"></script>
+</body>
+
+</html>
