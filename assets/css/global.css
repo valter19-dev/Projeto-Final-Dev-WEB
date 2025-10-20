@@ -1045,6 +1045,16 @@ p a:hover {
     transform: translateX(0);
 }
 
+.invalido {
+    border-color: #dc2626 !important;
+    background-color: #fee2e2;
+}
+
+
+
+
+
+
 @keyframes slideIn {
     0% {
         opacity: 0;
