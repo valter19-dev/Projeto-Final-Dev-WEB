@@ -96,38 +96,36 @@
                 <h2>Detalhes da Tarefa</h2>
                 <a href="./dashboard.html" class="botao-voltar-lista">Voltar para a Lista</a>
             </div>
-
             <div class="detalhes-container">
                 <div class="cartao-detalhes">
                     <div class="titulo-status">
-                        <h2>Revisar proposta do cliente</h2>
-                        <span class="status-pendente-detalhes">Pendente</span>
+                        <h2 id="detalhe-titulo">Revisar proposta do cliente</h2>
+                        <span id="detalhe-status" class="status-pendente-detalhes">Pendente</span>
                     </div>
-                    <form action="./editar-tarefa.html">
+
+                    <form id="form-acoes-detalhes" action="./editar-tarefa.html">
                         <div class="campo-detalhes">
                             <label>Criado em:</label>
-
-                            <span>24 de Agosto de 2025</span>
+                            <span id="detalhe-criado-em">24 de Agosto de 2025</span>
                         </div>
 
                         <div class="campo-detalhes">
                             <label>Descrição:</label>
                             <div class="descricao-completa">
-                                <p>Verificar os valores e o escopo do projeto antes de enviar para o cliente. Focar na
-                                    cláusula 5.3 sobre prazos de entrega. É crucial garantir que todos os itens
-                                    solicitados
-                                    na última reunião estejam contemplados no documento final.</p>
+                                <p id="detalhe-descricao">Verificar os valores e o escopo do projeto...</p>
                             </div>
                         </div>
 
                         <div class="acoes-detalhes">
                             <button type="submit" class="botao-editar-tarefa">Editar Tarefa</button>
-                            <button type="button" class="botao-excluir-tarefa">Excluir Tarefa</button>
+                            <button type="button" id="botao-excluir-detalhes" class="botao-excluir-tarefa">Excluir
+                                Tarefa</button>
                         </div>
                     </form>
                 </div>
             </div>
-        </main>
+    </div>
+    </main>
     </div>
     <script src="../assets/js/detalhes-tarefa.js"></script>
 </body>

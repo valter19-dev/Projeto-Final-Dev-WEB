@@ -2,10 +2,11 @@
 
 document.addEventListener("DOMContentLoaded", () => {
   // ----------------------------------------------------
-  // 1. ELEMENTOS ESSENCIAIS (Certifique-se que o FORMULÁRIO tem o ID 'form-cadastro')
+  // 1. ELEMENTOS ESSENCIAIS
   // ----------------------------------------------------
   const formCadastro = document.getElementById("form-cadastro");
 
+  // ⚠️ Correção: .trim() só pode ser usado em strings, não em elementos.
   const nomeInput = document.getElementById("nome-cadastro");
   const emailInput = document.getElementById("email-cadastro");
   const senhaInput = document.getElementById("senha-cadastro");
@@ -14,44 +15,43 @@ document.addEventListener("DOMContentLoaded", () => {
   const erroEmail = document.getElementById("erro-email");
   const erroSenha = document.getElementById("erro-senha");
 
-  // Elemento para a notificação
-  const elementoNotificacao = document.getElementById("notificacao"); // ID no HTML
+  const elementoNotificacao = document.getElementById("notificacao");
 
   // ----------------------------------------------------
-  // 2. FUNÇÃO DE NOTIFICAÇÃO (Com animação slideIn/slideOut)
+  // 2. FUNÇÃO DE NOTIFICAÇÃO
   // ----------------------------------------------------
   function mostrarNotificacao(mensagem, tipo = "sucesso") {
     if (!elementoNotificacao) return;
 
     elementoNotificacao.textContent = mensagem;
-
-    // Entrada: Aplica 'ativo' (slideIn)
     elementoNotificacao.className = `notificacao ${tipo} ativo`;
 
-    // Saída: Prepara a animação de saída após 3 segundos
     setTimeout(() => {
-      // Remove 'ativo' e adiciona 'saindo' (slideOut) - Requer a classe .saindo no CSS
       elementoNotificacao.classList.remove("ativo");
       elementoNotificacao.classList.add("saindo");
 
-      // Limpa o elemento completamente após o tempo da animação (500ms)
       setTimeout(() => {
         elementoNotificacao.className = "notificacao";
-        elementoNotificacao.classList.remove("saindo"); // Garante que a classe 'saindo' seja removida
+        elementoNotificacao.classList.remove("saindo");
       }, 500);
     }, 3000);
   }
 
   // ----------------------------------------------------
   // 3. FUNÇÃO DE VALIDAÇÃO GERAL
-  //    Centralizamos a lógica para reuso no 'input' e 'submit'
   // ----------------------------------------------------
   function validarCampos() {
     let formValido = true;
 
-    // Validação de Nome (Seu código adaptado)
-    if (nomeInput.value.trim().length < 3) {
-      erroNome.textContent = "O nome deve ter pelo menos 3 caracteres.";
+    const nomeValor = nomeInput.value.trim();
+    const emailValor = emailInput.value.trim();
+    const senhaValor = senhaInput.value;
+
+    // --- Validação de NOME ---
+    // Deve ter pelo menos 5 caracteres e conter um espaço entre nome e sobrenome.
+    if (nomeValor.length < 5 || !nomeValor.includes(" ")) {
+      erroNome.textContent =
+        "O nome deve ter pelo menos 5 caracteres e conter nome e sobrenome.";
       nomeInput.classList.add("invalido");
       formValido = false;
     } else {
@@ -59,10 +59,12 @@ document.addEventListener("DOMContentLoaded", () => {
       nomeInput.classList.remove("invalido");
     }
 
-    // Validação de Email (Seu código adaptado)
-    // Adicionamos a verificação para o '.' (ponto) para ser mais rigoroso.
-    if (!emailInput.value.includes("@") || !emailInput.value.includes(".")) {
-      erroEmail.textContent = "Insira um e-mail válido.";
+    // --- Validação de EMAIL ---
+    // Expressão regular para validar: algo@algo.com ou algo@algo.com.br
+    const regexEmail = /^[^\s@]+@[^\s@]+\.(com|com\.br)$/i;
+    if (!regexEmail.test(emailValor)) {
+      erroEmail.textContent =
+        "Insira um e-mail válido no formato exemplo@dominio.com ou .com.br";
       emailInput.classList.add("invalido");
       formValido = false;
     } else {
@@ -70,9 +72,9 @@ document.addEventListener("DOMContentLoaded", () => {
       emailInput.classList.remove("invalido");
     }
 
-    // Validação de Senha (Seu código adaptado)
-    if (senhaInput.value.length < 6) {
-      erroSenha.textContent = "A senha deve ter pelo menos 6 caracteres.";
+    // --- Validação de SENHA ---
+    if (senhaValor.length < 8) {
+      erroSenha.textContent = "A senha deve ter pelo menos 8 caracteres.";
       senhaInput.classList.add("invalido");
       formValido = false;
     } else {
@@ -84,98 +86,71 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // ----------------------------------------------------
-  // 4. VALIDAÇÃO EM TEMPO REAL (Seus eventos 'input' originais, agora chamando validarCampos)
+  // 4. VALIDAÇÃO EM TEMPO REAL
   // ----------------------------------------------------
-  // Usamos 'keyup' para garantir que a classe invalido seja removida mais rapidamente
   nomeInput.addEventListener("input", validarCampos);
   emailInput.addEventListener("input", validarCampos);
   senhaInput.addEventListener("input", validarCampos);
 
   // ----------------------------------------------------
-  // 5. EVENTO PRINCIPAL: SUBMISSÃO DO FORMULÁRIO (Ação de Salvar e Notificar)
+  // 5. EVENTO DE SUBMISSÃO DO FORMULÁRIO
   // ----------------------------------------------------
   if (formCadastro) {
-    // Verifica se o formulário existe antes de adicionar o listener
     formCadastro.addEventListener("submit", (e) => {
       e.preventDefault();
 
-      // 1. Revalida tudo. Se falhar, notifica o usuário sobre o erro.
       if (!validarCampos()) {
         mostrarNotificacao("Por favor, corrija os campos inválidos.", "erro");
         return;
       }
 
-      // 1. Extrai os dados
       const nomeUsuario = nomeInput.value.trim();
       const emailUsuario = emailInput.value.trim();
-      const senhaUsuario = senhaInput.value; // Senhas NUNCA devem ser salvas assim em produção!
+      const senhaUsuario = senhaInput.value;
 
-      // 2. Cria o objeto do usuário
       const novoUsuario = {
         nome: nomeUsuario,
         email: emailUsuario,
-        senha: senhaUsuario, // Apenas para fins de aprendizado/teste
+        senha: senhaUsuario,
       };
 
-      // 3. RECUPERA USUÁRIOS EXISTENTES OU INICIA UMA NOVA LISTA
-      // O LocalStorage armazena apenas strings.
-      // A chave 'usuarios' guardará uma lista de todos os cadastros.
-      const usuariosSalvosString = localStorage.getItem("usuarios");
-      const listaUsuarios = usuariosSalvosString
-        ? JSON.parse(usuariosSalvosString)
-        : [];
+      // Recupera usuários do LocalStorage
+      const usuariosSalvos = localStorage.getItem("usuarios");
+      const listaUsuarios = usuariosSalvos ? JSON.parse(usuariosSalvos) : [];
 
-      // 4. VERIFICA SE O EMAIL JÁ ESTÁ CADASTRADO (Profissionalismo!)
+      // Verifica duplicidade de email
       const emailExiste = listaUsuarios.some(
         (user) => user.email === emailUsuario
       );
+
       if (emailExiste) {
         mostrarNotificacao(
           "Este e-mail já está cadastrado. Tente fazer login.",
           "erro"
         );
-        return; // Interrompe o processo
+        return;
       }
 
-      // 5. ADICIONA O NOVO USUÁRIO À LISTA E SALVA DE VOLTA NO LOCALSTORAGE
+      // Salva novo usuário
       listaUsuarios.push(novoUsuario);
       localStorage.setItem("usuarios", JSON.stringify(listaUsuarios));
 
-      // 6. NOTIFICAÇÃO DE SUCESSO!
+      // Salva nome logado
+      localStorage.setItem("nome_usuario_logado", nomeUsuario);
+
       mostrarNotificacao(
         `Cadastro de ${nomeUsuario} realizado com sucesso!`,
         "sucesso"
       );
 
-      // 7. Redirecionamento (Recomendado: ir para a página de login)
+      // Redireciona para login
       setTimeout(() => {
         window.location.href = "./login.html";
       }, 3500);
-
-      // --- LÓGICA DE CADASTRO BEM-SUCEDIDO ---
-      const Usuario = nomeInput.value.trim();
-
-      // 2. SALVAMENTO (Simulação)
-      // Em um projeto real, aqui você faria a chamada à API para registrar o usuário.
-
-      // Salva o nome para ser usado no dashboard após o login
-      localStorage.setItem("nome_usuario_logado", Usuario);
-
-      // 3. NOTIFICAÇÃO DE SUCESSO!
-      mostrarNotificacao(
-        `Cadastro de ${Usuario} realizado com sucesso!`,
-        "sucesso"
-      );
-
-      // 4. Redirecionamento (Ação profissional: redirecionar após a notificação)
-      // Você pode redirecionar para a página de Login ou diretamente para o Dashboard
-      setTimeout(() => {
-        window.location.href = "./login.html"; // Redireciona para o login
-      }, 3500); // 3.5 segundos para o usuário ver a notificação
     });
   } else {
     console.error(
-      "Elemento 'form-cadastro' não encontrado. Verifique o ID no seu HTML."
+      "Elemento 'form-cadastro' não encontrado. Verifique o ID no HTML."
     );
   }
 });
