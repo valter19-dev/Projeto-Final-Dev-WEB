@@ -72,12 +72,9 @@
                     <h3>Nova Tarefa</h3>
                 </a>
 
-                <a href="#">
-                    <i class="bi bi-envelope-fill"></i>
-                    <h3>Mensagens</h3>
-                    <span class="message-count">4</span>
-
-                </a>
+                <a href="#" id="link-mensagens" class="menu-item">
+                    <i class="bi bi-envelope"></i> Mensagens
+                    <span id="badge-contador-mensagens" class="badge">4</span> </a>
 
                 <a href="#">
                     <i class="bi bi-person-fill"></i>
@@ -131,6 +128,25 @@
                 </div> -->
             </div>
         </main>
+
+        <div id="modal-mensagens" class="modal">
+            <div class="modal-conteudo">
+                <div class="modal-cabecalho">
+                    <h2><i class="bi bi-envelope-fill"></i> Suas Mensagens</h2>
+                    <span class="fechar-modal" id="botao-fechar-modal">&times;</span>
+                </div>
+
+                <div id="lista-mensagens" class="modal-corpo">
+                    <div class="mensagem-vazia-modal">
+                        <p>Nenhuma mensagem nova no momento.</p>
+                    </div>
+                </div>
+
+                <div class="modal-rodape">
+                    <button id="botao-limpar-mensagens" class="botao-limpar-modal">Limpar Todas as Mensagens</button>
+                </div>
+            </div>
+        </div>
     </div>
 
     <script src="../assets/js/dashboard.js"></script>
